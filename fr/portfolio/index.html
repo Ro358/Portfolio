@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Ronan Le Morvan</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Portfolio de Ronan Le Morvan — accès protégé.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <main class="page">
+    <div class="lang"><span class="active">FR</span> · <a href="../../en/portfolio/index.html">EN</a></div>
+    <a class="back" href="../index.html">← Retour à l'accueil</a>
+
+    <p class="eyebrow">Portfolio</p>
+    <h1>Découvrez mes projets</h1>
+    <p class="prose">Certains de mes projets sont confidentiels, je garde donc mon portfolio protégé par mot de passe.</p>
+
+    <form id="gate" autocomplete="off">
+      <label for="pwd">Mot de passe :</label>
+      <div class="field">
+        <input type="password" id="pwd" name="pwd" autofocus>
+        <button type="button" class="toggle" id="toggle" aria-label="Afficher le mot de passe">
+          <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+          <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" /><path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" /><path d="M3 3l18 18" /></svg>
+        </button>
+      </div>
+      <p class="error" id="error" role="alert">Mot de passe incorrect.</p>
+      <button class="btn" type="submit">Voir le portfolio</button>
+    </form>
+
+    <div class="help">
+      <h2>Pas encore le mot de passe ?</h2>
+      <p class="prose">Écrivez-moi un mot et je vous partage mon portfolio avec plaisir — l'occasion d'échanger sur mes projets.</p>
+      <a href="mailto:ronan.lemorvan@gmail.com?subject=Acc%C3%A8s%20au%20portfolio">Contactez-moi</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <a class="foot-name" href="../index.html">Ronan, Product Designer</a>
+      <div class="foot-links">
+        <a href="index.html">Portfolio</a>
+        <a href="../cv.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="mailto:ronan.lemorvan@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/ronan-le-morvan-2758117b" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ⚠️ À personnaliser :
+    // Mot de passe stocké en HASH SHA-256 — le mot de passe en clair n'apparaît pas ici.
+    // Pour le changer : voir la note tout en bas de ce script.
+    const PASSWORD_HASH = "c2019a34914fe9a9a05d6d024a6b9cb1cec979416a76d03b24376405005914d0"; // = "ronan" (à remplacer)
+    const PORTFOLIO_URL = "../portfolio.pdf"; // ← le nom de ton PDF
+
+    const form = document.getElementById('gate');
+    const input = document.getElementById('pwd');
+    const error = document.getElementById('error');
+    const toggle = document.getElementById('toggle');
+
+    async function sha256(text) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+      return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const hash = await sha256(input.value);
+      if (hash === PASSWORD_HASH) {
+        window.location.href = PORTFOLIO_URL;
+      } else {
+        error.classList.add('show');
+        input.classList.add('invalid');
+        input.focus();
+      }
+    });
+
+    input.addEventListener('input', function () {
+      error.classList.remove('show');
+      input.classList.remove('invalid');
+    });
+
+    toggle.addEventListener('click', function () {
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      toggle.classList.toggle('on', show);
+      toggle.setAttribute('aria-label', show ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
+      input.focus();
+    });
+
+    /* ── Changer le mot de passe ─────────────────────────────────
+       1. Ouvre la page EN LIGNE (https), appuie sur F12 → onglet "Console".
+       2. Colle cette ligne en remplaçant TON_MOT_DE_PASSE :
+          crypto.subtle.digest('SHA-256', new TextEncoder().encode('TON_MOT_DE_PASSE')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+       3. Copie le résultat et colle-le dans PASSWORD_HASH ci-dessus.
+       ──────────────────────────────────────────────────────────── */
+  </script>
+</body>
+</html>

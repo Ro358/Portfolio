@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content="0; url=./en/">
+  <script>
+    (function () {
+      const preferredLanguages = Array.isArray(navigator.languages)
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || 'en'];
+
+      const prefersFrench = preferredLanguages.some((language) =>
+        (language || '').toLowerCase().startsWith('fr')
+      );
+
+      const target = prefersFrench ? './fr/' : './en/';
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting…</p>
+</body>
+</html>

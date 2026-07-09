@@ -1,0 +1,347 @@
+/* ============================================================
+   Ronan Le Morvan — feuille de style partagée
+   Utilisée par index.html, portfolio.html et les futures pages
+   (versions EN, etc.). La page d'accueil porte la classe .home
+   sur <body> pour ses quelques variantes d'espacement.
+   ============================================================ */
+
+:root {
+  --bg: #F5F4EF;
+  --ink: #333333;
+  --ink-soft: #736e67;
+  --accent: #D6243F;
+  --accent-bg: rgba(214, 36, 63, 0.08);
+  --line: rgba(59, 59, 59, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 64px 28px 40px;
+  flex: 1 0 auto;
+}
+
+/* --- Typographie --- */
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.home h1 { line-height: 1.5; margin-bottom: 24px; }
+
+.eyebrow {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+p.prose {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 26px;
+}
+.home p.prose { margin-bottom: 18px; }
+p.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+p.prose a:hover { color: var(--accent); }
+
+/* Titres de section (eyebrows rouges) */
+section { margin-top: 68px; }
+h2 {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+/* Lien retour (portfolio) */
+.back {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin-bottom: 40px;
+}
+.back:hover { color: var(--accent); }
+
+.lang { text-align: right; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+.lang a { color: var(--ink-soft); text-decoration: none; }
+.lang a:hover { color: var(--accent); }
+.lang .active { color: var(--ink); }
+
+/* Photo (accueil) */
+.photo {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* Ligne / liens CV */
+.cv-row {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-top: 16px;
+}
+.cv-row a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.cv-row a:hover { color: var(--accent); }
+
+/* Parcours */
+.xp { list-style: none; }
+.xp li {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.xp li:first-child { padding-top: 0; }
+.xp li:last-child { border-bottom: none; padding-bottom: 0; }
+.xp li.muted { color: var(--ink); }
+.xp .role { color: var(--ink); font-weight: 600; display: block; font-size: 15.5px; margin-bottom: 2px; }
+.xp .tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 4px;
+  padding: 1px 7px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+.xp a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.xp a:hover { color: var(--accent); }
+.xp .cvlink { display: inline-block; margin-top: 16px; }
+
+/* Expertise (grille de pills) */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 22px;
+}
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.skill .ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #FADFE3;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.skill .ico svg { width: 21px; height: 21px; }
+
+/* Contact */
+.cta { margin-top: 68px; }
+.cta-sub { font-size: 15px; font-weight: 400; color: var(--ink); margin-bottom: 20px; }
+.cta-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.cta .cv {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.cta .cv:hover { color: var(--accent); }
+
+/* CTA en haut de l'accueil (bouton + lien) */
+.top-cta { margin-top: 36px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.top-cta .link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.top-cta .link:hover { color: var(--accent); }
+
+/* Bouton */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  padding: 11px 20px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(35, 35, 35, 0.22); }
+
+/* Formulaire mot de passe (portfolio) */
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.field {
+  position: relative;
+  max-width: 320px;
+  margin-bottom: 6px;
+}
+.field input {
+  width: 100%;
+  display: block;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 44px 12px 14px;
+  transition: border-color 0.15s ease;
+}
+.field input:focus { outline: none; border-color: var(--ink); }
+.field input.invalid,
+.field input.invalid:focus { border-color: var(--accent); }
+.toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.toggle:hover { color: var(--ink); }
+.toggle svg { width: 20px; height: 20px; }
+.toggle .icon-off { display: none; }
+.toggle.on .icon-on { display: none; }
+.toggle.on .icon-off { display: inline-flex; }
+.error {
+  visibility: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--accent);
+  margin: 4px 0 10px;
+}
+.error.show { visibility: visible; }
+
+/* Bloc "pas de mot de passe" (portfolio) */
+.help {
+  margin-top: 56px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.help h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: normal;
+  text-transform: none;
+  margin-bottom: 12px;
+}
+.help a {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.help a:hover { color: var(--accent); }
+
+/* Footer pleine largeur (accueil) */
+footer {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+  flex-shrink: 0;
+}
+.foot-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.foot-name { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none;}
+.foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.foot-links a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; }
+.foot-links a:hover { color: var(--accent); }
+
+/* --- Responsive --- */
+@media (min-width: 900px) {
+  .page { max-width: 600px; padding-top: 88px; }
+  .photo { width: 116px; height: 116px; }
+  .eyebrow { font-size: 13px; }
+  h1 { font-size: 23px; }
+  p.prose { font-size: 17.5px; }
+  h2 { font-size: 13px; }
+  .cv-row, .xp li, .skill, .cta-sub, .cta .cv { font-size: 16px; }
+  .xp .role { font-size: 16.5px; }
+  .foot-inner { max-width: 600px; }
+}
+@media (max-width: 420px) {
+  .skills { grid-template-columns: 1fr; }
+}
