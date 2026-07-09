@@ -30,7 +30,7 @@ body {
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
-  padding: 64px 28px 40px;
+  padding: 48px 28px 40px;
   flex: 1 0 auto;
 }
 
@@ -93,6 +93,23 @@ h2 {
 .lang a { color: var(--ink-soft); text-decoration: none; }
 .lang a:hover { color: var(--accent); }
 .lang .active { color: var(--ink); }
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.page.portfolio {
+  padding-top: 28px;
+}
+
+.page.portfolio .lang,
+.page.portfolio .back {
+  margin-bottom: 0;
+}
 
 /* Photo (accueil) */
 .photo {
@@ -332,7 +349,7 @@ footer {
 
 /* --- Responsive --- */
 @media (min-width: 900px) {
-  .page { max-width: 600px; padding-top: 88px; }
+  .page { max-width: 600px; padding-top: 64px; }
   .photo { width: 116px; height: 116px; }
   .eyebrow { font-size: 13px; }
   h1 { font-size: 23px; }

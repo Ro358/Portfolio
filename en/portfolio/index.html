@@ -13,9 +13,11 @@
   <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
-  <main class="page">
-    <div class="lang"><a href="../../fr/portfolio/">FR</a> · <span class="active">EN</span></div>
-    <a class="back" href="../">← Back to home</a>
+  <main class="page portfolio">
+    <div class="portfolio-header">
+      <a class="back" href="../">← Back to home</a>
+      <div class="lang"><a href="../../fr/portfolio/">FR</a> · <span class="active">EN</span></div>
+    </div>
 
     <p class="eyebrow">Portfolio</p>
     <h1>Explore my projects</h1>
@@ -57,7 +59,7 @@
     // ⚠️ À personnaliser :
     // Mot de passe stocké en HASH SHA-256 — le mot de passe en clair n'apparaît pas ici.
     // Pour le changer : voir la note tout en bas de ce script.
-    const PASSWORD_HASH = "d40e9e3df4e2be96f0a6d0ce183d4db0a0a4a8cb6597f1bb93d7d8fcd4fe95f8"; // = "ronandesign" (à remplacer)
+    const PASSWORD_HASH = "afc4283972e5d29c8d96c5f2c95f60c217e25e952097a6b129f023a7a92e3edc"; // = "ronandesign" (à remplacer)
     const PORTFOLIO_URL = "../portfolio.pdf"; // ← le nom de ton PDF (version EN)
 
     const form = document.getElementById('gate');
