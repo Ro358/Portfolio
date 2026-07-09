@@ -99,7 +99,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .page.portfolio {
@@ -350,6 +350,7 @@ footer {
 /* --- Responsive --- */
 @media (min-width: 900px) {
   .page { max-width: 600px; padding-top: 64px; }
+  .page.portfolio { padding-top: 16px; }
   .photo { width: 116px; height: 116px; }
   .eyebrow { font-size: 13px; }
   h1 { font-size: 23px; }
