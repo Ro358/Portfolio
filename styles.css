@@ -99,7 +99,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 44px;
 }
 
 .page.portfolio {
@@ -109,6 +109,10 @@ h2 {
 .page.portfolio .lang,
 .page.portfolio .back {
   margin-bottom: 0;
+}
+
+.page.portfolio .eyebrow {
+  margin-bottom: 22px;
 }
 
 /* Photo (accueil) */
